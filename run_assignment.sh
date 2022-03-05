@@ -71,6 +71,8 @@ deployHelmChart() {
 populateDB() {
 	echo "----------------------------------------------------------------------------------"	
 	echo "Populating DB with existing dump"
+	# this is required as it will allow proper spinning up of pod and then proceed with dump.
+	sleep 30s
 	MYSQL_POD=`kubectl get po -o custom-columns=":metadata.name" | grep -m1 mysql`
 	kubectl exec -i pod/$MYSQL_POD -- mysql -u root -p$MYSQL_ROOT_PASSWORD < userapp_dump.sql
 	echo "----------------------------------------------------------------------------------"	
