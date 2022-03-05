@@ -1,0 +1,40 @@
+# Default values for test.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+
+appReplicaCount: 3
+dbReplicaCount: 1
+
+userappDB: userapp
+
+dbImage:
+  name: mysql
+  pullPolicy: Never
+  tag: latest
+
+appImage:
+  name: userapp
+  pullPolicy: Never
+  tag: latest
+    
+dbService:
+  type: NodePort
+  port: 3306
+  protocol: TCP
+
+appService:
+  type: LoadBalancer
+  port: 5000
+  protocol: TCP
+  externalIP: 192.168.49.2
+
+persistence:
+  storageClass: manual
+  storage: 1Gi
+  accessMode: ReadWriteOnce
+  hostPath: /mnt/data
+  requestSize: 1Gi
+
+ingress:
+  enabled: false

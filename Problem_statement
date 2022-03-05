@@ -1,0 +1,28 @@
+**Tools**
+
+Tools to use: minikube or hosted k8s.
+
+
+**Objective**
+
+The idea of the test is to show your ability to run databases and microservices applications in kubernetes.
+
+Create an application that connects to a database, reads some data and returns this data upon HTTP request.
+This can be a simple web app which reads a 'hello world' string from mysql database.
+Run a database app. Data volume should be persistent.
+Application from step 1 needs to discover a database from step 2 using kubernetes native features.
+Database credentials should NOT be hardcoded in application or helm chart code.
+Application should be accessible from the outside of kubernetes.
+Create a helm chart which implements all these steps and deploy via blue/green deployment.
+**Solution**
+
+Provide a link to the repository which has:
+
+application code
+helm chart
+docker files 
+readme
+**How it will be tested**
+
+We expect a readme which lists all the required commands to run your app locally in minikube/hosted k8s.
+

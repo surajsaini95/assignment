@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "test.fullname" . }}-userapp
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ template "test.fullname" . }}
+spec:
+  replicas: {{ .Values.appReplicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "test.fullname" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "test.fullname" . }}
+    spec:
+      containers:
+        - name: {{ .Values.appImage.name }}
+          image: "{{ .Values.appImage.name }}:{{ .Values.appImage.tag }}"
+          imagePullPolicy: {{ .Values.appImage.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.appService.port }}
+          env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ template "test.fullname" . }}-secret
+                key: mysql_root_password
+          - name: DB_NAME
+            value: {{ .Values.userappDB }}
