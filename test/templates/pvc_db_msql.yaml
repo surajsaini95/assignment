@@ -5,6 +5,7 @@ metadata:
   namespace: {{ .Release.Namespace }}
   labels:
     app: {{ template "test.fullname" . }}
+    env: {{ .Values.env }}
 spec:
   storageClassName: {{ .Values.persistence.storageClass }}
   accessModes:

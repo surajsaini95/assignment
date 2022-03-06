@@ -6,7 +6,7 @@
 appReplicaCount: 1
 dbReplicaCount: 1
 
-env: green
+env: blue
 
 userappDB: userapp
 
@@ -18,7 +18,7 @@ dbImage:
 appImage:
   name: userapp
   pullPolicy: Never
-  tag: green
+  tag: blue
     
 dbService:
   type: NodePort
@@ -35,7 +35,7 @@ persistence:
   storageClass: manual
   storage: 1Gi
   accessMode: ReadWriteOnce
-  hostPath: /mnt/green
+  hostPath: /mnt/blue
   requestSize: 1Gi
 
 ingress:

@@ -4,6 +4,7 @@ metadata:
   name: {{ template "test.fullname" . }}-pv
   labels:
     type: {{ template "test.fullname" . }}
+    env: {{ .Values.env }}
 spec:
   storageClassName: {{ .Values.persistence.storageClass }}
   capacity:
