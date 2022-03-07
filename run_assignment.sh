@@ -16,10 +16,10 @@ checkMinikube() {
 		minikube start
 	else
 		echo "Minikube is running"
-		eval $(minikube docker-env)
-		echo -e "Configured minikube to use Docker daemon for your kubernetes cluster\n"
 		minikube status
 	fi
+	eval $(minikube docker-env)
+	echo -e "Configured minikube to use Docker daemon for your kubernetes cluster\n"	
 	echo "----------------------------------------------------------------------------------"	
 }
 
